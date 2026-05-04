@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para Dayanna 🎀</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
+
+        :root {
+            --pink-main: #ffb6c1;
+            --pink-dark: #ff8fa3;
+            --pink-light: #fff0f3;
+            --paper: #fdfdfd;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffdeeb;
+            background-image: radial-gradient(var(--pink-main) 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Quicksand', sans-serif;
+            perspective: 2000px;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        .book-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .petal {
+            position: fixed;
+            top: -10px;
+            z-index: 1; 
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .book {
+            position: relative;
+            width: 320px; 
+            height: 460px;
+            transform-style: preserve-3d;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: var(--paper);
+            transform-origin: left;
+            transform-style: preserve-3d;
+            transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+            border-radius: 0 15px 15px 0;
+            background-image: linear-gradient(90deg, rgba(0,0,0,0.03) 0%, transparent 5%, transparent 95%, rgba(0,0,0,0.03) 100%);
+            border: 1px solid rgba(0,0,0,0.08);
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .content {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            padding: 25px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            box-sizing: border-box;
+            text-align: center;
+            border: 2px solid var(--pink-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .cover { 
+            background: var(--pink-main) !important; 
+            color: white !important; 
+            border: 5px solid white !important;
+        }
+
+        .flipped { transform: rotateY(-180deg); }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin: 10px 0; }
+        h3 { color: var(--pink-dark); font-size: 1.5rem; margin-bottom: 10px; font-family: 'Dancing Script', cursive; }
+        p { font-size: 0.95rem; color: #444; font-weight: 600; line-height: 1.5; margin: 8px 0; }
+        
+        .emoji { 
+            font-size: 60px; 
+            margin-bottom: 15px; 
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .chapter-label {
+            background: var(--pink-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            color: var(--pink-dark);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            margin-top: auto;
+            font-size: 0.75rem;
+            color: var(--pink-main);
+            font-style: italic;
+            padding-top: 10px;
+            border-top: 1px dashed var(--pink-light);
+            width: 100%;
+        }
+
+        .reset-btn {
+            background: white;
+            color: var(--pink-dark);
+            border: 2px solid var(--pink-dark);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 375px) {
+            .book { width: 280px; height: 400px; }
+            h1 { font-size: 2rem; }
+            p { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="book-wrapper" id="wrapper">
+        <div class="book">
+            <div class="page cover" id="p12" style="cursor: default;">
+                <div class="content">
+                    <div class="emoji">🌸</div>
+                    <h1 style="font-size: 1.8rem;">Fin</h1>
+                    <button class="reset-btn" onclick="resetBook()">Cerrar libro</button>
+                    <div class="footer" style="color: white; border-top-color: white;">Hecho con cariño por Patrick</div>
+                </div>
+            </div>
+
+            <div class="page" id="p11">
+                <div class="content">
+                    <div class="emoji">♾️</div>
+                    <h3>Promesa</h3>
+                    <p>No importa lo que el futuro nos depare, siempre guardaré cada uno de estos momentos como mi mayor tesoro.</p>
+                    <p>Te quiero con todo mi corazón, Dayanna.</p>
+                    <div class="footer">🎀</div>
+                </div>
+            </div>
+
+            <div class="page" id="p10">
+                <div class="content">
+                    <div class="emoji">🌱</div>
+                    <h3>Un nuevo brote</h3>
+                    <p>Confío en que este silencio sea solo el abono para algo mejor. Espero que pronto la vida nos regale ese café y las risas que tenemos pendientes.</p>
+                    <div class="footer">Casi al final...</div>
+                </div>
+            </div>
+
+            <div class="page" id="p9">
+                <div class="content">
+                    <div class="chapter-label">Capítulo V: Esperanza</div>
+                    <div class="emoji">🌠</div>
+                    <h3>Coincidir</h3>
+                    <p>Dicen que las personas que se cuidan siempre vuelven a encontrarse. Yo elijo creer que el destino volverá a cruzar nuestros caminos.</p>
+                    <div class="footer">Continúa...</div>
+                </div>
+            </div>
+
+            <div class="page" id="p8">
+                <div class="content">
+                    <div class="emoji">☁️</div>
+                    <h3>Paz infinita</h3>
+                    <p>Había una magia especial en la forma en que el tiempo se detenía cuando me rodeabas con tus brazos. Gracias por esos instantes de calma.</p>
+                    <div class="footer">Aún hay más...</div>
+                </div>
+            </div>
+
+            <div class="page" id="p7">
+                <div class="content">
+                    <div class="chapter-label">Capítulo IV: Seguridad</div>
+                    <div class="emoji">🧸</div>
+                    <h3>Tu Refugio</h3>
+                    <p>Extraño esa sensación de seguridad absoluta que solo encontraba en tus abrazos. Era el lugar donde el ruido de afuera se callaba.</p>
+                    <div class="footer">Siguiente capítulo</div>
+                </div>
+            </div>
+
+            <div class="page" id="p6">
+                <div class="content">
+                    <div class="emoji">🌙</div>
+                    <h3>Complicidad</h3>
+                    <p>Desde las bromas más tontas hasta los sueños más grandes; nadie sabe escuchar ni entender con la complicidad que tú lo haces.</p>
+                    <div class="footer">Sigue explorando...</div>
+                </div>
+            </div>
+
+            <div class="page" id="p5">
+                <div class="content">
+                    <div class="chapter-label">Capítulo III: Nuestra Voz</div>
+                    <div class="emoji">💬</div>
+                    <h3>Sin Horarios</h3>
+                    <p>Amo recordar nuestras charlas interminables, donde las horas volaban. Hablar contigo siempre fue mi parte favorita.</p>
+                    <div class="footer">Continúa la historia</div>
+                </div>
+            </div>
+
+            <div class="page" id="p4">
+                <div class="content">
+                    <div class="emoji">📸</div>
+                    <h3>Instantes Eternos</h3>
+                    <p>Cada recuerdo compartido vive en mí como una fotografía perfecta. Sigo celebrando cada uno de tus éxitos con una sonrisa.</p>
+                    <div class="footer">Pasa la página...</div>
+                </div>
+            </div>
+
+            <div class="page" id="p3">
+                <div class="content">
+                    <div class="chapter-label">Capítulo II: Nostalgia</div>
+                    <div class="emoji">🍂</div>
+                    <h3>Tu Ausencia</h3>
+                    <p>Es difícil acostumbrarse a no tenerte cerca, pero este espacio me sirve para valorar la huella tan bonita que has dejado en mí.</p>
+                    <div class="footer">Hay mucho que decir...</div>
+                </div>
+            </div>
+
+            <div class="page" id="p2">
+                <div class="content">
+                    <div class="chapter-label">Capítulo I: Esencia</div>
+                    <div class="emoji">✨</div>
+                    <h3>Lo que Admiro</h3>
+                    <p>Quise crear esto para recordarte que eres alguien excepcional. Tu brillo ilumina mis pensamientos incluso hoy.</p>
+                    <div class="footer">Comienza el viaje...</div>
+                </div>
+            </div>
+
+            <div class="page cover" id="p1">
+                <div class="content">
+                    <div class="emoji">🐱</div>
+                    <h1>Para Dayanna</h1>
+                    <div class="bow">🎀</div>
+                    <p style="color: white; font-style: italic;">"Escrito en el corazón"</p>
+                    <div class="footer" style="color: white; border-top-color: white;">Toca para abrir</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const wrapper = document.getElementById('wrapper');
+        const total = pages.length;
+
+        function adjustScale() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const baseWidth = 360; 
+            const baseHeight = 500;
+
+            const scaleX = screenWidth / baseWidth;
+            const scaleY = screenHeight / baseHeight;
+            const finalScale = Math.min(scaleX, scaleY, 1); 
+
+            wrapper.style.transform = `scale(${finalScale * 0.9})`;
+        }
+
+        window.addEventListener('resize', adjustScale);
+        adjustScale();
+
+        function organizeZIndex() {
+            pages.forEach((page, index) => {
+                page.style.zIndex = index + 1;
+            });
+        }
+
+        organizeZIndex();
+
+        pages.forEach((page, index) => {
+            page.addEventListener('click', (e) => {
+                if (page.id === 'p12') return;
+                
+                if (page.classList.contains('flipped')) {
+                    page.classList.remove('flipped');
+                    setTimeout(() => { page.style.zIndex = index + 1; }, 500);
+                } else {
+                    page.classList.add('flipped');
+                    setTimeout(() => { page.style.zIndex = total - index; }, 500);
+                }
+            });
+        });
+
+        function resetBook() {
+            const flippedPages = Array.from(pages)
+                .filter(p => p.classList.contains('flipped') && p.id !== 'p12')
+                .sort((a, b) => parseInt(b.id.replace('p', '')) - parseInt(a.id.replace('p', '')));
+
+            flippedPages.forEach((page, index) => {
+                setTimeout(() => {
+                    page.classList.remove('flipped');
+                    setTimeout(() => { organizeZIndex(); }, 1000); 
+                }, index * 150);
+            });
+        }
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.innerText = '🌸';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+            petal.style.fontSize = Math.random() * 10 + 10 + 'px';
+            petal.style.opacity = Math.random();
+            document.body.appendChild(petal);
+            setTimeout(() => { petal.remove(); }, 5000);
+        }
+        setInterval(createPetal, 400);
+    </script>
+</body>
+</html>
